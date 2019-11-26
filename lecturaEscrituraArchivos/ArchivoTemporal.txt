@@ -1,0 +1,51 @@
+1: package lecturaEscrituraArchivos;
+2: 
+3: import java.io.BufferedReader;
+4: import java.io.BufferedWriter;
+5: import java.io.EOFException;
+6: import java.io.FileReader;
+7: import java.io.FileWriter;
+8: import java.io.IOException;
+9: import java.io.InputStreamReader;
+10: import java.io.PrintWriter;
+11: import java.io.StringReader;
+12: 
+13: public class LecturaArchivo {
+14: 	
+15: 	public static void main(String[] args) throws IOException {
+16: 	
+17: 		System.out.println(System.getProperty("user.dir"));
+18: 			
+19: 			BufferedReader in=new BufferedReader(new FileReader("src/lecturaEscrituraArchivos/LecturaArchivo.java"));
+20: 			
+21: 			String s,s2=new String();
+22: 			while((s=in.readLine())!=null) {
+23: 				s2+=s+"\n";
+24: 				
+25: 			}
+26: 			
+27: 			in.close();
+28: 			
+29: 			BufferedReader stdin=new BufferedReader(new InputStreamReader(System.in));
+30: 			System.out.println("Introduzca cualquier dato: ");
+31: 			s2+="Usted agregó la línea \" "+stdin.readLine()+" \" en la línea de comandos";
+32: 			
+33: 		try {
+34: 			BufferedReader leer=new BufferedReader(new StringReader(s2));
+35: 			PrintWriter escribir=new PrintWriter(new BufferedWriter(new FileWriter("ArchivoTemporal.txt")));
+36: 			int lineaNo=1;
+37: 			while((s=leer.readLine())!=null){
+38: 				escribir.println(lineaNo++ +": "+s);
+39: 			}
+40: 			escribir.close();
+41: 			
+42: 			
+43: 			System.out.println("Finallllll");
+44: 			
+45: 		} catch (EOFException e) {
+46: 			System.out.println("Final de stream");
+47: 		}
+48: 	}
+49: 
+50: }
+51: Usted agregó la línea " eeeeooo " en la línea de comandos
